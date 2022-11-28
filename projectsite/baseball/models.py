@@ -34,4 +34,15 @@ class Play(BaseModel):
     isActive = models.BooleanField(default=False)
     pos = models.ForeignKey(Position, on_delete=models.CASCADE)
 
+    class Match(BaseModel):
+        team1 = models.ForeignKey(Club, on_delete=models.CASCADE, related_name = "Team1")
+        team2 = models.ForeignKey(Club, on_delete=models.CASCADE, related_name = "Team2")
+        score_t1 = models.IntegerField()
+        score_t2 = models.IntegerField()
+        winner = models.ForeignKey(Club, on_delete=models.CASCADE, related_name = "Winner")
+        game_date = models.DateField(default=timezone.now, blank=True, verbose_name="Date of Issuance")
+
+    def __str__(self):
+        return f"{self.team1} vs {self.team2}"
+
 
