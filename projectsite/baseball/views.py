@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 
-# Create your views here.
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
@@ -60,4 +59,3 @@ class MatchView(ListView):
     def get_queryset(self, *args, **kwargs):
         qs = super(MatchView, self).get_queryset(*args, **kwargs)
         return qs
-
